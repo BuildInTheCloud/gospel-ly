@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.buildinthecloud.gospel-ly" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>funnelope</name>
-    <description>mad feeder.</description>
+    <name>gospel-ly</name>
+    <description>gospel-ly.</description>
     <author email="mark@buildinthecloud.com" href="http://www.buildinthecloud.com/gospel-ly.html">BuildInTheCloud</author>
   <content src="index.html"/>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png" />

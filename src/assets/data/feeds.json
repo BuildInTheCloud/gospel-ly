@@ -1,7 +1,0 @@
-[
-    {"key": "gamespot-news", "title":"GameSpot News", "type": "rss", "icon": "gamespot-icon.png", "logo": "gamespot.jpg", "url": "http://www.gamespot.com/feeds/news/"},
-    {"key": "nytimes", "title":"NY Times", "type": "rss", "icon": "nytimes-icon.png", "logo": "nytimes.jpg", "url": "http://rss.nytimes.com/services/xml/rss/nyt/Business.xml"},
-    {"key": "lifehacker", "title":"LifeHacker", "type": "rss", "icon": "lifehacker-icon.jpg", "logo": "lifehacker.jpg", "url": "http://feeds.gawker.com/lifehacker/full"},
-    {"key": "cnn", "title":"CNN Top Stories", "type": "rss", "icon": "cnn-icon.png", "logo": "cnn.jpg", "url": "http://rss.cnn.com/rss/cnn_topstories.rss"},
-    {"key": "wired", "title":"Wired Top Stories", "type": "rss", "icon": "wired-icon.png", "logo": "wired.jpg", "url": "https://www.wired.com/feed/"}
-]
