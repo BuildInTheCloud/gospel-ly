@@ -1,0 +1,14 @@
+page-feeds {
+    .card-notselected {
+        display:none;
+    }
+    .card-selected {
+        color: $font-light;
+        background-color: $favorite !important;
+        padding: 15px;
+        float:left;
+        display:block;
+        position:absolute;
+        border-bottom-right-radius: 2em;
+    }
+}

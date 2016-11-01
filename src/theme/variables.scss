@@ -1,0 +1,50 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+$text-color:        #000;
+$background-color:  #eee;
+$headings-font-weight: 300;
+
+//-- site coler palete
+$primary:    #F16E32;
+$secondary:  #087DCB;
+$danger:     #f53d3d;
+$light:      #f4f4f4;
+$dark:       #C6490F;
+$favorite:   #69BB7B;
+$font-light: #ffffff;
+$font-dark:  #222222;
+$body:       #ababab;
+
+
+// Named Color Variables
+// --------------------------------------------------
+$colors: (
+  primary:    $primary,
+  secondary:  $secondary,
+  danger:     $danger,
+  light:      $light,
+  dark:       $dark,
+  favorite:   $favorite
+);
+
+// App Theme
+// --------------------------------------------------
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+$ionicons-font-path: "../assets/fonts";
+@import "ionicons";

@@ -1,0 +1,14 @@
+page-news {
+    ion-card>ion-item {
+        background-color:#ccccb3 !important;
+    }
+    .more {
+        padding:8px; margin-bottom:15px;float:right;
+    }
+    .hideIT {
+        display: none !important;
+    }
+    .showIT {
+        display: block !important;
+    }
+}

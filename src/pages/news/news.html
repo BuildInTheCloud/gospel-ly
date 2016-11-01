@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-searchbar
+    placeholder="Search title and details"
+    [(ngModel)]="searchFor"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onSearchInput($event)"
+    (ionCancel)="onSearchCancel($event)">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content *ngIf="!hasNews()">
+  <ion-card responsive-sm>
+    <ion-card-content>
+      <h1>No News feeds selected</h1>
+      <p>This screen will load once you pick your feeds and the cache is updated.</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-content *ngIf="hasNews()">
+  <ion-card responsive-sm *ngFor="let article of feed; let key = index;">
+    <ion-item>
+      <ion-avatar item-left><img src="assets/images/{{article.icon}}"></ion-avatar>
+      <h2>{{article.title}}</h2>
+      <p>{{article.pubDate | amDateFormat:'LL'}}</p>
+    </ion-item>
+    <img *ngIf="article.content" src="{{article.content.url}}"/>
+    <img *ngIf="!article.content" src="assets/images/{{article.logo}}"/>
+    <ion-card-content>
+      <p *ngIf="!article.description || (article.description && article.description.length < 10)" [innerHTML]="article.title"></p>
+      <button class="more" *ngIf="article.description && article.description.length > 10" (click)="showDetails(key, $event)">
+        <ion-icon name="paper"></ion-icon>
+        <span>Read more ...</span>
+      </button>
+      <div class="hideIT" id="detail{{key}}" *ngIf="article.description" [innerHTML]="article.description"></div>
+      <button class="hideIT" (click)="hideDetails(key, $event)">
+        <ion-icon name="paper"></ion-icon>
+        <span>Hide details ...</span>
+      </button>
+      <a target="_blank" href="{{article.link}}">
+        <ion-icon name="link"></ion-icon>
+        <span>Go To Full Article</span>
+      </a>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="article.creator"><strong>Author:</strong> <i>{{article.creator}}</i></div>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>{{article.pubDate | amCalendar}}</ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

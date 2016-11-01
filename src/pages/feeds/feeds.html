@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-searchbar
+    placeholder="Search title and details"
+    [(ngModel)]="searchFor"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onSearchInput($event)"
+    (ionCancel)="onSearchCancel($event)">
+  </ion-searchbar>
+</ion-header>
+<ion-content padding class="card-background-page">
+  <ion-card *ngFor="let feed of feedMaster; let i = index;" (click)="selectFeed($event, feed.key, i);">
+    <div id="card{{i}}" [class]="setSelected(feed.key, i)">SELECTED</div>
+    <img src="assets/images/{{feed.logo}}"/>
+  </ion-card>
+</ion-content>
