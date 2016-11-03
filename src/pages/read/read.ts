@@ -14,8 +14,9 @@ export class ReadPage {
   shouldShowCancel: boolean = false;
   testement: string;
   book: string;
-  public oldTestement: any = [];
-  public newTestement: any = [];
+  oldTestement: any = [];
+  newTestement: any = [];
+  readView: any = [];
 
   constructor(public navCtrl: NavController, public data: Data, public navParams: NavParams) {
 
@@ -30,8 +31,30 @@ export class ReadPage {
   loadData() {
     this.oldTestement = this.data.getOldTestement();
     this.newTestement = this.data.getNewTestement();
+    if (this.testement == "old") {
+      this.readView = this.oldTestement.filter(record => record.book === this.book)[0];
+    } else if (this.testement == "new") {
+      this.readView = this.newTestement.filter(record => record.book === this.book)[0];
+    }
+    //console.log(this.readView.chapters);
   }
 
+  chapterToArray(index, chapter: any) {
+    console.log(JSON.stringify(chapter));
+    var returnArray: any = [];
+    chapter = chapter[index];
+    //console.log("chapter["+index+"]",chapter);
+    if (chapter[index] != undefined) {
+      for (var x = 1; x <= chapter[index].length; x++){
+        //console.log("W", chapter[x]);
+        if (chapter[x] !== undefined) {
+          //console.log(chapter[x]);
+          returnArray.push(chapter[x]);
+        }
+      }
+    }
+    return returnArray;
+  }
   onSearchCancel(event) {
     this.oldTestement = this.data.getOldTestement();
     this.newTestement = this.data.getNewTestement();
