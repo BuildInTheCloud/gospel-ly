@@ -6,126 +6,56 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class Data {
-  public feedMaster: any = [];
-  public feedsRaw: any = [];
-  public cache: any = [];
-  public myFeeds :any = [];
-  public lastUpdate: any = Date();
+  private bible: any = [];
+  private oldTestement: any = [];
+  private newTestement: any = [];
+  public oldTestementBooks: any = [
+    "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings",
+    "1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah",
+    "Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah",
+    "Haggai","Zechariah","Malachi"
+  ];
+  public newTestementBooks: any = [
+    "Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians",
+    "Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter",
+    "2 Peter","1 John","2 John","3 John","Jude","Revelation"
+  ];
 
   constructor(public http: Http, public storage: Storage) {
-    this.loadMasterList().then( data => { } );
-    this.storage.get('myFeeds').then(data => {
-      this.myFeeds = JSON.parse(data) ? JSON.parse(data) : [];
-    });
-
-  }
-
-  public refreshNews(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.storage.get('myFeeds').then(data => {
-        this.myFeeds = JSON.parse(data) ? JSON.parse(data) : [];
-        resolve(this.buildNewsCache());
+    this.loadBible().then( data => {
+      this.bible = data;
+      this.bible.forEach(book => {
+        //-- seperate old testement
+        var match = this.oldTestementBooks.filter(record => record === book.book);
+        if (match.length > 0) { this.oldTestement.push(book); }
+        //-- seperate new testement
+        var match = this.newTestementBooks.filter(record => record === book.book);
+        if (match.length > 0) { this.newTestement.push(book); }
       });
     });
   }
 
-  public clearMyFeeds(): any {
-    this.storage.set('myFeeds', JSON.stringify([]) );
-    return {success: true};
+  public getBible(): any {
+    return this.bible;
   }
 
-  public clearCache(): any {
-    this.storage.set('savedFeeds', JSON.stringify([]) );
-    return {success: true};
+  public getOldTestement(): any {
+    return this.oldTestement;
   }
 
-  public getMasterList(): any  {
-    return this.feedMaster;
+  public getNewTestement(): any {
+    return this.newTestement;
   }
 
-  public loadMasterList(): Promise<any> {
-    return Promise.resolve(
-      this.http.get("assets/data/feeds.json")
+  private loadBible(): Promise<any> {
+    return new Promise(resolve => {
+      this.http.get("assets/data/en_kjv.json")
         .map(res => res.json())
         .subscribe(data => {
-          this.feedMaster = data;
-          return true;
+          resolve(data);
         })
-    );
-  }
-
-  //-- {"key": "gamespot-news", "type": "rss", "icon": "", "logo": "", "url": "http://www.gamespot.com/feeds/news/", "feed": ""},
-  private buildNewsCache(): any {
-    //-- TODO: this will change to user selected feeds
-    this.feedsRaw = [];
-    this.cache = [];
-    this.feedMaster.forEach(feed => {
-      var match = this.myFeeds.filter(record => record.feed === feed.key);
-      if (match.length > 0) {
-        //-- relay through yahoo
-        var url: string = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22'+encodeURIComponent(feed.url)+'%22&format=json';
-        //-- get each feed
-        this.http.get(url).subscribe(res => {
-          var newFeed: any = feed;
-          var rawFeed = this.processRawFeed(res.json(), feed.type);
-          if (rawFeed.length > 0) {
-            //-- updates for news display
-            rawFeed.forEach(source => {
-              source.icon = feed.icon;
-              source.logo = feed.logo;
-              source.pubDate = (new Date(source.pubDate)).getTime();
-            });
-            newFeed.feed = rawFeed;
-          } else {
-            newFeed.feed = [];
-          }
-          //-- add to raw feeds
-          this.feedsRaw.push(newFeed);
-          //-- if we have all the feeds, build cache
-          if (this.feedsRaw.length >= this.myFeeds.length) {
-            this.feedsRaw.forEach(source => {
-              if (source.feed) {
-                source.feed.forEach(news => {
-                  //-- only include news with images
-                  if (news.content) {
-                    if (news.content.url) {
-                      //-- TODO: filter based on user rules
-                      this.cache.push(news);
-                    }
-                  }
-                });
-              }
-            });
-            //-- add to local cache
-            this.cache = this.cache.sort(function(a,b){return b.pubDate - a.pubDate});
-            //-- save cache to storage
-            this.storage.set('savedFeeds', JSON.stringify(this.cache) );
-            this.lastUpdate = Date();
-          }
-        });
-      }
+      ;
     });
-  }
-
-  private processRawFeed(data, type) {
-    if (type == "rss" && data.query.results) {
-      var returnItems = data.query.results.item;
-      returnItems.forEach(source => {
-        if (source.description) {
-          try {
-            source.description = source.description.replace(/<a /g, "<a target=\"_blank\" ");
-          } catch(e) {
-            source.description = JSON.stringify(source.description)
-            source.description = source.description.replace(/<a /g, "<a target=\"_blank\" ");
-          }
-        }
-      });
-      return returnItems;
-    } else if (type == "atom" && data.query.results) {
-      return [];
-    } else {
-      return [];
-    }
   }
 
 }

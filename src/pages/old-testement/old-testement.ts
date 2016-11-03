@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { Data } from '../../providers/data';
+import { ReadPage } from "../read/read";
 
 @Component({
   selector: 'page-old-testement',
@@ -9,47 +9,22 @@ import { Data } from '../../providers/data';
 })
 
 export class OldTestementPage {
-  feedMaster: any = [];
   errorMessage: any;
-  searchFor: string = "";
-  shouldShowCancel: boolean = false;
-  myFeeds: any = [];
+  public oldTestement: any = [];
+  public oldTestementBooks: any = [];
 
-  constructor(public navCtrl: NavController, public data: Data, public storage: Storage) {
-
-  }
+  constructor(public navCtrl: NavController, public data: Data) { }
 
   ngOnInit() {this.loadData();}
 
-  loadData() {  }
-
-
-  onSearchCancel(event) {
-    /*
-    this.feed = this.feedRAW;
-    */
+  loadData() {
+    this.oldTestement = this.data.getOldTestement();
+    this.oldTestementBooks = this.data.oldTestementBooks;
   }
 
-  onSearchInput(event) {
-    /*
-    var searchText = event.target.value;
-    if (searchText == "" || searchText == undefined) {
-      this.feed = this.feedRAW;
-    } else {
-      this.feed = [];
-      for (var x = 0; x < this.feedRAW.length; x++) {
-        if (this.feedRAW[x].title && searchText) {
-          if (this.feedRAW[x].title.toLowerCase().indexOf(searchText.toLowerCase()) >= 0) {
-            this.feed.push(this.feedRAW[x]);
-          }
-        } else if (this.feedRAW[x].description && searchText) {
-          if (this.feedRAW[x].description.toLowerCase().indexOf(searchText.toLowerCase()) >= 0) {
-            this.feed.push(this.feedRAW[x]);
-          }
-        }
-      }
-    }
-    */
+  readBook( navTo: string ) {
+    console.log("Nav To:", navTo);
+    this.navCtrl.push(ReadPage, { testement: "old", book: navTo } );
   }
 
 }

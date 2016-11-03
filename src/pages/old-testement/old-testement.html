@@ -1,12 +1,11 @@
 <ion-header>
-  <ion-searchbar
-    placeholder="Search"
-    [(ngModel)]="searchFor"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="onSearchInput($event)"
-    (ionCancel)="onSearchCancel($event)">
-  </ion-searchbar>
+  <ion-navbar>
+    <ion-title>Old Testment</ion-title>
+  </ion-navbar>
 </ion-header>
 <ion-content padding>
-
+  <ion-card *ngFor="let book of oldTestementBooks; let i = index;" (click)="readBook(book);">
+    <img src="assets/images/{{book}}"/>
+    <h1>{{book}}</h1>
+  </ion-card>
 </ion-content>
