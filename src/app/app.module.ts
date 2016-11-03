@@ -3,24 +3,24 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
-import { Feeds } from '../providers/feeds';
+import { Data } from '../providers/data';
 import {MomentModule} from 'angular2-moment';
 //-- app pages
-import { NewsPage } from '../pages/news/news';
-import { ProfilePage } from '../pages/profile/profile';
-import { RefreshPage } from '../pages/refresh/refresh';
+import { QuotePage } from '../pages/quote/quote';
+import { OldTestementPage } from '../pages/old-testement/old-testement';
+import { NewTestementPage } from '../pages/new-testement/new-testement';
 import { AboutPage } from '../pages/about/about';
-import { FeedsPage } from '../pages/feeds/feeds';
+import { ReadPage } from '../pages/read/read';
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
-    NewsPage,
-    ProfilePage,
-    RefreshPage,
+    QuotePage,
+    OldTestementPage,
+    NewTestementPage,
     AboutPage,
-    FeedsPage
+    ReadPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -30,22 +30,15 @@ import { FeedsPage } from '../pages/feeds/feeds';
   entryComponents: [
     MyApp,
     TabsPage,
-    NewsPage,
-    ProfilePage,
-    RefreshPage,
+    QuotePage,
+    OldTestementPage,
+    NewTestementPage,
     AboutPage,
-    FeedsPage
+    ReadPage
   ],
   providers: [
     Storage,
-    Feeds
-    /*
-    { provide: Feeds,
-        useFactory: (config: Feeds) => () => config.init(),
-        deps: [],
-        multi: true
-    }
-    */
+    Data
   ]
 })
 

@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
 
 //-- app pages for tabs
-import { NewsPage } from '../news/news';
-import { ProfilePage } from '../profile/profile';
-import { RefreshPage } from '../refresh/refresh';
+import { QuotePage } from '../quote/quote';
+import { OldTestementPage } from '../old-testement/old-testement';
+import { NewTestementPage } from '../new-testement/new-testement';
 import { AboutPage } from '../about/about';
-import { FeedsPage } from '../feeds/feeds';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 
 export class TabsPage {
-  tabNews: any = NewsPage;
-  tabProfile: any = ProfilePage;
-  tabRefresh: any = RefreshPage;
+  tabQuote: any = QuotePage;
+  tabOldTestement: any = OldTestementPage;
+  tabNewTestement: any = NewTestementPage;
   tabAbout: any = AboutPage;
-  tabFeedManager: any = FeedsPage;
 
   constructor() {
 

@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-searchbar
+    placeholder="Search"
+    [(ngModel)]="searchFor"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onSearchInput($event)"
+    (ionCancel)="onSearchCancel($event)">
+  </ion-searchbar>
+</ion-header>
+<ion-content padding>
+
+</ion-content>

@@ -1,21 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { FeedsPage } from '../feeds/feeds';
 import { IonicModule } from 'ionic-angular';
 
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html'
+  selector: 'page-quote',
+  templateUrl: 'quote.html'
 })
 
-export class ProfilePage {
+export class QuotePage {
 
   constructor(public navCtrl: NavController) {
 
-  }
-
-  gotoFeedSetup() {
-    this.navCtrl.push(FeedsPage);
   }
 
 }

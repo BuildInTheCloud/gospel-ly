@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class Feeds {
+export class Data {
   public feedMaster: any = [];
   public feedsRaw: any = [];
   public cache: any = [];
