@@ -43,7 +43,7 @@ export class ReadPage {
     var returnArray: any = [];
     chapter = chapter[index];
     for (var x in chapter) {
-      returnArray.push(chapter[x]);
+      returnArray.push(chapter[x].replace("{","<strong>").replace("}","</strong>"));
     }
     return returnArray;
   }
