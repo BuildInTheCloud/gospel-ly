@@ -17,6 +17,7 @@ export class ReadPage {
   oldTestement: any = [];
   newTestement: any = [];
   readView: any = [];
+  cleanView: any = [];
 
   constructor(public navCtrl: NavController, public data: Data, public navParams: NavParams) {
 
@@ -31,38 +32,31 @@ export class ReadPage {
   loadData() {
     this.oldTestement = this.data.getOldTestement();
     this.newTestement = this.data.getNewTestement();
+    this.setReadView();
+  }
+
+  setReadView() {
     if (this.testement == "old") {
       this.readView = this.oldTestement.filter(record => record.book === this.book)[0];
     } else if (this.testement == "new") {
       this.readView = this.newTestement.filter(record => record.book === this.book)[0];
     }
+    this.cleanView = this.readView;
   }
 
   onSearchCancel(event) {
-    this.oldTestement = this.data.getOldTestement();
-    this.newTestement = this.data.getNewTestement();
+    this.setReadView();
   }
 
   onSearchInput(event) {
     var searchText = event.target.value;
     if (searchText == "" || searchText == undefined) {
-      this.oldTestement = this.data.getOldTestement();
-      this.newTestement = this.data.getNewTestement();
+      this.setReadView();
     } else {
-      /*
-      this.oldTestement = [];
-      for (var x = 0; x < this.feedRAW.length; x++) {
-        if (this.feedRAW[x].title && searchText) {
-          if (this.feedRAW[x].title.toLowerCase().indexOf(searchText.toLowerCase()) >= 0) {
-            this.feed.push(this.feedRAW[x]);
-          }
-        } else if (this.feedRAW[x].description && searchText) {
-          if (this.feedRAW[x].description.toLowerCase().indexOf(searchText.toLowerCase()) >= 0) {
-            this.feed.push(this.feedRAW[x]);
-          }
-        }
+      this.readView = this.cleanView;
+      for (var c in this.readView.chapters) {
+        console.log(this.readView.chapters[c].verses);
       }
-      */
     }
   }
 

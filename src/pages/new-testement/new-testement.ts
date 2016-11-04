@@ -23,7 +23,6 @@ export class NewTestementPage {
   }
 
   readBook( navTo: string ) {
-    console.log("Nav To:", navTo);
     this.navCtrl.push(ReadPage, { testement: "new", book: navTo } );
   }
 

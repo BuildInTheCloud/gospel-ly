@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8' standalone="yes"?>
 <widget id="com.buildinthecloud.gospelly" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>gospel-ly</name>
     <description>gospel-ly.</description>
@@ -99,7 +99,6 @@
     <preference name="WindowsStoreIdentityName" value="64909BuildInTheCloud.funnelope" />
     <preference name="WindowsStorePublisherName" value="BuildInTheCloud" />
     <preference name="WindowsStoreDisplayName" value="funnelope" />
-    <!--
     <splash src="resources/windows/images/SplashScreen.scale-100.png" width="620" height="300" />
     <splash src="res/screens/windows/SplashScreen.scale-240.png" width="1152" height="1920" />
     <splash src="resources/windows/images/SplashScreenPhone.scale-240.png" width="1152" height="1920" />
@@ -114,7 +113,6 @@
     <icon src="resources/windows/images/StoreLogo.scale-240.png" width="120" height="120" />
     <icon src="resources/windows/images/Wide310x150Logo.scale-100.png" width="310" height="150" />
     <icon src="resources/windows/images/Wide310x150Logo.scale-240.png" width="744" height="360" />
-    -->
   </platform>
 
 </widget>
