@@ -38,15 +38,6 @@ export class ReadPage {
     }
   }
 
-  chapterToArray(index, chapter: any) {
-    console.log(index, chapter);
-    var returnArray: any = [];
-    chapter = chapter[index];
-    for (var x in chapter) {
-      returnArray.push(chapter[x].replace("{","<strong>").replace("}","</strong>"));
-    }
-    return returnArray;
-  }
   onSearchCancel(event) {
     this.oldTestement = this.data.getOldTestement();
     this.newTestement = this.data.getNewTestement();

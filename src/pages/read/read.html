@@ -15,7 +15,7 @@
   <div *ngFor="let chapter of readView.chapters; let c = index;">
     <h1>chapter {{c + 1}}</h1>
     <ol type="1">
-      <li *ngFor="let verse of chapterToArray(c + 1, chapter);" [innerHTML]="verse"></li>
+      <li *ngFor="let verse of chapter.verses;" [innerHTML]="verse"></li>
     </ol>
   </div>
 </ion-content>

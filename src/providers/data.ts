@@ -27,12 +27,26 @@ export class Data {
       this.bible.forEach(book => {
         //-- seperate old testement
         var match = this.oldTestementBooks.filter(record => record === book.book);
-        if (match.length > 0) { this.oldTestement.push(book); }
+        if (match.length > 0) { this.oldTestement.push(this.repair(book)); }
         //-- seperate new testement
         var match = this.newTestementBooks.filter(record => record === book.book);
-        if (match.length > 0) { this.newTestement.push(book); }
+        if (match.length > 0) { this.newTestement.push(this.repair(book)); }
       });
     });
+  }
+
+  private repair(book) {
+    var returnBook: any = book;
+    for (var c in book.chapters) {
+      var clean: any = [];
+      for (var x in book.chapters[c]) {
+        for (var n in book.chapters[c][x]) {
+          clean.push(book.chapters[c][x][n].replace("{","<strong>").replace("}","</strong>"));
+        }
+      }
+      returnBook.chapters[c].verses = clean;
+    }
+    return returnBook;
   }
 
   public getBible(): any {
