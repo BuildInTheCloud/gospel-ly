@@ -34,24 +34,16 @@ export class ReadPage {
     if (this.testement == "old") {
       this.readView = this.oldTestement.filter(record => record.book === this.book)[0];
     } else if (this.testement == "new") {
-      this.readView = this.newTestement.filter(record => record.book === this.book)[0];
+      this.newTestement = this.newTestement.filter(record => record.book === this.book)[0];
     }
-    //console.log(this.readView.chapters);
+    console.log(this.newTestement);
   }
 
   chapterToArray(index, chapter: any) {
-    console.log(JSON.stringify(chapter));
     var returnArray: any = [];
     chapter = chapter[index];
-    //console.log("chapter["+index+"]",chapter);
-    if (chapter[index] != undefined) {
-      for (var x = 1; x <= chapter[index].length; x++){
-        //console.log("W", chapter[x]);
-        if (chapter[x] !== undefined) {
-          //console.log(chapter[x]);
-          returnArray.push(chapter[x]);
-        }
-      }
+    for (var x in chapter) {
+      returnArray.push(chapter[x]);
     }
     return returnArray;
   }
