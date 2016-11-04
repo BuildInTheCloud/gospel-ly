@@ -20,16 +20,9 @@ export class ReadPage {
   cleanView: any = [];
 
   constructor(public navCtrl: NavController, public data: Data, public navParams: NavParams) {
-
-  }
-
-  ngOnInit() {
+    console.log("constructor");
     this.testement = this.navParams.get("testement");
     this.book = this.navParams.get("book");
-    this.loadData();
-  }
-
-  loadData() {
     this.oldTestement = this.data.getOldTestement();
     this.newTestement = this.data.getNewTestement();
     this.setReadView();
@@ -45,19 +38,26 @@ export class ReadPage {
   }
 
   onSearchCancel(event) {
-    this.setReadView();
+    this.readView = this.cleanView;
   }
 
   onSearchInput(event) {
     var searchText = event.target.value;
-    if (searchText == "" || searchText == undefined) {
-      this.setReadView();
-    } else {
+    console.log("search start: ", searchText);
+    if (searchText == "" || searchText == undefined || searchText.length < 3) {
       this.readView = this.cleanView;
-      for (var c in this.readView.chapters) {
-        console.log(this.readView.chapters[c].verses);
+    } else {
+      var temp = this.cleanView;
+      for (var c in temp.chapters) {
+        for (var v in temp.chapters[c].verses) {
+          var regex = new RegExp(searchText, "gi");
+          temp.chapters[c].verses[v] = temp.chapters[c].verses[v].replace(regex, "<span class=\"highlight\">"+searchText.toUpperCase()+"</span>");
+        }
       }
+      this.readView = temp;
     }
+    console.log("search end: ", searchText);
+    return true;
   }
 
 }
