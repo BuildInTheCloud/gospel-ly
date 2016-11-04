@@ -34,12 +34,12 @@ export class ReadPage {
     if (this.testement == "old") {
       this.readView = this.oldTestement.filter(record => record.book === this.book)[0];
     } else if (this.testement == "new") {
-      this.newTestement = this.newTestement.filter(record => record.book === this.book)[0];
+      this.readView = this.newTestement.filter(record => record.book === this.book)[0];
     }
-    console.log(this.newTestement);
   }
 
   chapterToArray(index, chapter: any) {
+    console.log(index, chapter);
     var returnArray: any = [];
     chapter = chapter[index];
     for (var x in chapter) {
