@@ -1,7 +1,7 @@
+declare var window;
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, LoadingController } from 'ionic-angular';
 import {StatusBar, AdMob} from 'ionic-native';
-
 import { TabsPage } from '../pages/tabs/tabs';
 import { Data } from '../providers/data';
 
@@ -13,10 +13,10 @@ import { Data } from '../providers/data';
 export class MyApp {
   rootPage = TabsPage;
 
-  constructor(public platform: Platform, public data: Data) {
+  constructor(public platform: Platform, public data: Data, public loadingCtrl: LoadingController) {
     platform.ready().then(() => {
       StatusBar.styleDefault();
-      var admobid = {banner: "ca-app-pub-4615642243411455/4194083161", interstitial: ""};
+      var admobid = {banner: "ca-app-pub-4615642243411455/6637041966", interstitial: ""};
       AdMob.createBanner({
         adId:admobid.banner,
         position: 8,
@@ -26,5 +26,6 @@ export class MyApp {
         autoShow: true
       });
     });
+
   }
 }

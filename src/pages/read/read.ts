@@ -1,5 +1,6 @@
+declare var window;
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Data } from '../../providers/data';
 
 @Component({
@@ -18,11 +19,19 @@ export class ReadPage {
   newTestement: any = [];
   readView: any = [];
   cleanView: any = [];
+  loader: any;
 
-  constructor(public navCtrl: NavController, public data: Data, public navParams: NavParams) {
-    console.log("constructor");
+  constructor(public navCtrl: NavController, public data: Data, public navParams: NavParams, public loadingCtrl: LoadingController) {
+  }
+
+  ionViewWillEnter() {
+    this.loader.dismiss();
+  }
+
+  ngOnInit() {
     this.testement = this.navParams.get("testement");
     this.book = this.navParams.get("book");
+    this.loader = this.navParams.get("loading");
     this.oldTestement = this.data.getOldTestement();
     this.newTestement = this.data.getNewTestement();
     this.setReadView();
