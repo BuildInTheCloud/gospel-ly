@@ -44,6 +44,7 @@ export class Data {
           clean.push(book.chapters[c][x][n].replace("{","<strong>").replace("}","</strong>"));
         }
       }
+      returnBook.chapters[c] = [];
       returnBook.chapters[c].verses = clean;
     }
     return returnBook;

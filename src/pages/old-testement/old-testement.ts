@@ -38,7 +38,7 @@ export class OldTestementPage {
 
   readBook( navTo: string ) {
     this.navTo = navTo;
-    let overlay = this.loadingCtrl.create({ content: "Loading ..." });
+    let overlay = this.loadingCtrl.create({ content: "Loading " + navTo + " ..." });
     this.loader = overlay;
     this.loader.present().then(action => this.launchPage() );
   }
