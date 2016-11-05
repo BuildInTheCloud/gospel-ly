@@ -5,8 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-<h1>Old Testement Verse</h1>
 
-<h1>New Testement Verse</h1>
+  <h1>Old Testement Verse</h1>
+  <p [innerHTML]="oldTestementVerse"></p>
 
+  <h1>New Testement Verse</h1>
+  <p [innerHTML]="newTestementVerse"></p>
+
+  <button ion-button (click)="pickVerse()">Refresh</button>
 </ion-content>
