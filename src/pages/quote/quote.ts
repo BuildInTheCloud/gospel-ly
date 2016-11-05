@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { IonicModule } from 'ionic-angular';
+import { IonicModule, LoadingController } from 'ionic-angular';
 import { Data } from '../../providers/data';
 import {Observable} from 'rxjs/Rx';
 
@@ -18,13 +18,17 @@ export class QuotePage {
   newTestementVerse: string = "Loading...";
   timer: any;
   subscription: any;
+  loader: any;
 
-  constructor(public navCtrl: NavController, public data: Data) {
+  constructor(public navCtrl: NavController, public data: Data, public loadingCtrl: LoadingController) {
     this.timer = Observable.timer(2000, 3000);
     this.subscription = this.timer.subscribe(t => { this.loadData(); } );
   }
 
   ngOnInit() {
+    let overlay = this.loadingCtrl.create({ content: "Loading ..." });
+    this.loader = overlay;
+    this.loader.present();
   }
 
   loadData() {
@@ -32,6 +36,7 @@ export class QuotePage {
     this.newTestement = this.data.getNewTestement();
     if (this.oldTestement.length > 0) {
       this.subscription.unsubscribe();
+      this.loader.dismiss();
       this.pickVerse();
     }
   }

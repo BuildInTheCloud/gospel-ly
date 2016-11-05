@@ -1,6 +1,5 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Book of {{book}}</ion-title>
     <ion-searchbar
       placeholder="Search"
       [(ngModel)]="searchFor"
@@ -8,6 +7,7 @@
       (ionInput)="onSearchInput($event)"
       (ionCancel)="onSearchCancel($event)">
     </ion-searchbar>
+    <ion-title>Book of {{book}}</ion-title>
   </ion-navbar>
 </ion-header>
 

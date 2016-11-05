@@ -1,6 +1,6 @@
 {
   "name": "gospel-ly",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "BuildInTheCloud",
   "homepage": "http://www.buildinthecloud/gospel-ly.html",
   "description": "gospel-ly.",
@@ -43,10 +43,13 @@
     "typescript": "^2.0.3"
   },
   "cordovaPlugins": [
-    "cordova-plugin-whitelist",
     {
       "locator": "https://github.com/apache/cordova-plugin-splashscreen.git",
       "id": "cordova-plugin-splashscreen"
+    },
+    {
+      "locator": "https://github.com/apache/cordova-plugin-whitelist.git",
+      "id": "cordova-plugin-swhitelist"
     },
     {
       "locator": "https://www.npmjs.com/package/cordova-plugin-admobpro.git",
