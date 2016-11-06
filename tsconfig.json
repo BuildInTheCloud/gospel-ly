@@ -19,7 +19,7 @@
   "atom": {
     "rewriteTsconfig": false
   },
-  "include": [
+  "includex": [
     "C:\\code\\ark-assist\\src\\app\\main.dev.ts",
     "C:\\code\\ark-assist\\src\\**\\*.d.ts"
   ]

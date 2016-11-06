@@ -13,9 +13,9 @@
 
 <ion-content>
   <div *ngFor="let chapter of readView.chapters; let c = index;">
-    <h1>chapter {{c + 1}}</h1>
+    <h1>{{book}} chapter {{c + 1}}</h1>
     <ol type="1">
-      <li *ngFor="let verse of chapter.verses;" [innerHTML]="verse"></li>
+      <li *ngFor="let verse of chapter.verses;"><div [innerHTML]="verse"></div></li>
     </ol>
   </div>
 </ion-content>

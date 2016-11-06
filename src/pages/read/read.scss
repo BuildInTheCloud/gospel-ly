@@ -1,6 +1,5 @@
 page-read {
     h1 {
-        background-color: $font-light !important;
         color: $primary !important;
         font-size: 1.3em;
         text-align:center;
@@ -9,8 +8,17 @@ page-read {
     span.highlight {
         background-color:$font-light !important;
     }
-
-    li {
-        font-size:1.3em !important;
+    ol {
+        padding:25px;
+        li {
+            color: $primary;
+            font-size:0.8em !important;
+            padding:0px !important;
+            div {
+                font-size:1.3em !important;
+                color: $font-dark;
+                padding-bottom:8px;
+            }
+        }
     }
 }
