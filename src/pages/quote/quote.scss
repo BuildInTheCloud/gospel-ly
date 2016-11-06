@@ -1,12 +1,11 @@
 page-quote {
     h1 {
-        background-color: $font-light !important;
         color: $primary !important;
-        font-size: 1.3em;
-        text-align:center;
-        padding:8px;
+        font-size: 1.6em !important;
+        text-align:right;
+        padding:0 0 15px 0;
     }
     p {
-        font-size: 1.3em;
+        font-size: 1.3em !important;
     }
 }

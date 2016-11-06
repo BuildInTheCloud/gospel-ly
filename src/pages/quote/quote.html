@@ -6,11 +6,19 @@
 
 <ion-content padding>
 
-  <h1>Old Testement Verse</h1>
-  <p [innerHTML]="oldTestementVerse"></p>
+  <ion-card>
+    <ion-card-content>
+      <p [innerHTML]="oldTestementVerse"></p>
+      <h1>{{oldTestementLocation}}</h1>
+    </ion-card-content>
+  </ion-card>
 
-  <h1>New Testement Verse</h1>
-  <p [innerHTML]="newTestementVerse"></p>
+  <ion-card>
+    <ion-card-content>
+      <p [innerHTML]="newTestementVerse"></p>
+      <h1>{{newTestementLocation}}</h1>
+    </ion-card-content>
+  </ion-card>
 
   <button ion-button (click)="pickVerse()">Refresh</button>
 </ion-content>

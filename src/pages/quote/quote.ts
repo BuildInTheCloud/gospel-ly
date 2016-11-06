@@ -14,8 +14,10 @@ export class QuotePage {
   newTestement: any = [];
   OdTestCount: number = 23145;
   newTestNumber: number = 7957;
-  oldTestementVerse: string = "Loading...";
-  newTestementVerse: string = "Loading...";
+  oldTestementVerse: string = "";
+  newTestementVerse: string = "";
+  oldTestementLocation: string = "";
+  newTestementLocation: string = "";
   timer: any;
   subscription: any;
   loader: any;
@@ -48,16 +50,20 @@ export class QuotePage {
 
   findVerse(testement, dataSet: any, find: number) {
     var place: number = 0;
+    var book: string = "";
     top:
     for(var b in dataSet) {
+      book = dataSet[b].book;
       for(var c in dataSet[b].chapters) {
         for(var v = 0; v < dataSet[b].chapters[c].verses.length; v++) {
           if (place === find) {
             if (testement == "old") {
               this.oldTestementVerse = dataSet[b].chapters[c].verses[v];
+              this.oldTestementLocation = book + " " + c + ":" + v;
             }
             if (testement == "new") {
               this.newTestementVerse = dataSet[b].chapters[c].verses[v];
+              this.newTestementLocation = book + " " + c + ":" + v;
             }
             break top;
           }
