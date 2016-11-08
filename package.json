@@ -56,11 +56,11 @@
       "locator": "https://www.npmjs.com/package/cordova-plugin-admobpro.git",
       "id": "cordova-plugin-admobpro"
     },
-    "cordova-plugin-crosswalk-webview",
-    "cordova-sqlite-storage"
+    "cordova-plugin-crosswalk-webview"
   ],
   "cordovaPlatforms": [
     "ios",
-    "android"
+    "android",
+    "windows"
   ]
 }
