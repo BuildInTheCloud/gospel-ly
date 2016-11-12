@@ -27,27 +27,48 @@ export class Data {
       this.bible.forEach(book => {
         //-- seperate old testement
         var match = this.oldTestementBooks.filter(record => record === book.book);
-        if (match.length > 0) { this.oldTestement.push(this.repair(book)); }
+        if (match.length > 0) {
+          this.repair("old", book);
+        }
         //-- seperate new testement
         var match = this.newTestementBooks.filter(record => record === book.book);
-        if (match.length > 0) { this.newTestement.push(this.repair(book)); }
+        if (match.length > 0) {
+          this.repair("new", book);
+        }
+        //console.log(this.newTestement);
       });
     });
   }
 
-  private repair(book) {
-    var returnBook: any = book;
+  private repair(testement, book) {
+    var returnBook: any = [];
     for (var c in book.chapters) {
       var clean: any = [];
       for (var x in book.chapters[c]) {
         for (var n in book.chapters[c][x]) {
-          clean.push(book.chapters[c][x][n].replace("{","<strong>").replace("}","</strong>"));
+          //console.log(c,x,n,book.chapters[c][x][n].replace("{","<strong>").replace("}","</strong>"))
+          if (testement == "old") {
+            this.oldTestement.push({
+              abbrev: book.abbrev,
+              book: book.book,
+              chapter: x,
+              verse: n,
+              text: book.chapters[c][x][n].replace("{","<strong>").replace("}","</strong>")
+            });
+          }
+          if (testement == "new") {
+            this.newTestement.push({
+              abbrev: book.abbrev,
+              book: book.book,
+              chapter: x,
+              verse: n,
+              text: book.chapters[c][x][n].replace("{","<strong>").replace("}","</strong>")
+            });
+          }
         }
       }
-      returnBook.chapters[c] = [];
-      returnBook.chapters[c].verses = clean;
     }
-    return returnBook;
+    return true;
   }
 
   public getBible(): any {

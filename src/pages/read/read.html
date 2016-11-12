@@ -5,17 +5,23 @@
       [(ngModel)]="searchFor"
       [showCancelButton]="shouldShowCancel"
       (ionInput)="onSearchInput($event)"
-      (ionCancel)="onSearchCancel($event)">
+      (ionCancel)="onSearchCancel($event)"
+      [autocomplete]="off"
+      [debounce]="1000">
     </ion-searchbar>
     <ion-title>Book of {{book}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let chapter of readView.chapters; let c = index;">
+  <div *ngFor="let item of chapters; let c = index; trackBy: trackByFn">
     <h1>{{book}} chapter {{c + 1}}</h1>
     <ol type="1">
-      <li *ngFor="let verse of chapter.verses;"><div [innerHTML]="verse"></div></li>
+      <li [id]="'c' + record.chapter + 'v' + record.verse"
+        [ngClass]="record.chapter == chapter && record.verse == verse ? 'selected' : ''"
+        *ngFor="let record of filterChatper(c + 1);">
+          <div [innerHTML]="record.text"></div>
+      </li>
     </ol>
   </div>
 </ion-content>

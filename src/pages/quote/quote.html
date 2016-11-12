@@ -7,14 +7,14 @@
 <ion-content padding>
 
   <ion-card>
-    <ion-card-content>
+    <ion-card-content (click)="viewInContext('old')">
       <p [innerHTML]="oldTestementVerse"></p>
       <h1>{{oldTestementLocation}}</h1>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-card-content>
+    <ion-card-content (click)="viewInContext('new')">
       <p [innerHTML]="newTestementVerse"></p>
       <h1>{{newTestementLocation}}</h1>
     </ion-card-content>

@@ -20,7 +20,7 @@
     "rewriteTsconfig": false
   },
   "include": [
-    "C:\\code\\ark-assist\\src\\app\\main.dev.ts",
-    "C:\\code\\ark-assist\\src\\**\\*.d.ts"
+    "C:\\code\\gospel-ly\\src\\app\\main.dev.ts",
+    "C:\\code\\gospel-ly\\src\\**\\*.d.ts"
   ]
 }
