@@ -85,4 +85,7 @@ export class ReadPage {
     return this.readView;
   }
 
+  trackByFn() {
+
+  }
 }

@@ -6,7 +6,6 @@
       [showCancelButton]="shouldShowCancel"
       (ionInput)="onSearchInput($event)"
       (ionCancel)="onSearchCancel($event)"
-      [autocomplete]="off"
       [debounce]="1000">
     </ion-searchbar>
     <ion-title>Book of {{book}}</ion-title>

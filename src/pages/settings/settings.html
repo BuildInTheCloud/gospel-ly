@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list radio-group [(ngModel)]="bibleVersion" (ionChange)="setBibleVersion($event)">
+    <ion-list-header>Prefered Bible Version</ion-list-header>
+
+    <ion-item>
+    <ion-label><b>English</b> Basic English</ion-label>
+    <ion-radio checked="true" value="en_bbe"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>English</b> King James Version</ion-label>
+    <ion-radio value="en_kjv"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Arabic</b> The Arabic Bible</ion-label>
+    <ion-radio value="ar_svd"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Chinese</b> Union Version</ion-label>
+    <ion-radio value="zh_cuv"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Chinese</b> New Chinese Version</ion-label>
+    <ion-radio value="zh_ncv"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>German</b> Schlachter</ion-label>
+    <ion-radio value="de_schlachter"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Greek</b> Modern Greek</ion-label>
+    <ion-radio value="el_greek"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Esperanto</b> Esperanto</ion-label>
+    <ion-radio value="eo_esperanto"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Spanish</b> Reina Valera</ion-label>
+    <ion-radio value="es_rvr"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Finnish</b> Bible</ion-label>
+    <ion-radio value="fi_finnish"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Finnish</b> Pyhä Raamattu</ion-label>
+    <ion-radio value="fi_pr"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>French</b> Le Bible de I'Épée</ion-label>
+    <ion-radio value="fr_apee"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Korean</b> Version</ion-label>
+    <ion-radio value="ko_ko"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Portuguese</b> Almeida Revisada Imprensa Bíblica</ion-label>
+    <ion-radio value="pt_aa"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Portuguese</b> Almeida Corrigida e Revisada Fiel</ion-label>
+    <ion-radio value="pt_acf"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Portuguese</b> Nova Versão Internacional</ion-label>
+    <ion-radio value="pt_nvi"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Romanian</b> Versiunea Dumitru Cornilescu</ion-label>
+    <ion-radio value="ro_cornilescu"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Russian</b> Синодальный перевод</ion-label>
+    <ion-radio value="ru_synodal"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+    <ion-label><b>Vietnamese</b> Tiếng Việt</ion-label>
+    <ion-radio value="vi_vietnamese"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

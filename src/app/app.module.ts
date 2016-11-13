@@ -11,6 +11,7 @@ import { OldTestementPage } from '../pages/old-testement/old-testement';
 import { NewTestementPage } from '../pages/new-testement/new-testement';
 import { AboutPage } from '../pages/about/about';
 import { ReadPage } from '../pages/read/read';
+import { SettingsPage } from '../pages/settings/settings';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReadPage } from '../pages/read/read';
     OldTestementPage,
     NewTestementPage,
     AboutPage,
-    ReadPage
+    ReadPage,
+    SettingsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -34,7 +36,8 @@ import { ReadPage } from '../pages/read/read';
     OldTestementPage,
     NewTestementPage,
     AboutPage,
-    ReadPage
+    ReadPage,
+    SettingsPage
   ],
   providers: [
     Storage,

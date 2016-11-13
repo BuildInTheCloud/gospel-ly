@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class Data {
+  private bibleVersion: string;
   private bible: any = [];
   private oldTestement: any = [];
   private newTestement: any = [];
@@ -22,20 +23,27 @@ export class Data {
   ];
 
   constructor(public http: Http, public storage: Storage) {
-    this.loadBible().then( data => {
-      this.bible = data;
-      this.bible.forEach(book => {
-        //-- seperate old testement
-        var match = this.oldTestementBooks.filter(record => record === book.book);
-        if (match.length > 0) {
-          this.repair("old", book);
-        }
-        //-- seperate new testement
-        var match = this.newTestementBooks.filter(record => record === book.book);
-        if (match.length > 0) {
-          this.repair("new", book);
-        }
-        //console.log(this.newTestement);
+      this.initLoadBible();
+  }
+
+  initLoadBible() {
+    this.storage.get('bibleVersion').then(data => {
+      this.bibleVersion = data ? data : "en_bbe";
+      console.log("bibleVersion", this.bibleVersion);
+      this.loadBible().then( data => {
+        this.bible = data;
+        this.bible.forEach(book => {
+          //-- seperate old testement
+          var match = this.oldTestementBooks.filter(record => record === book.book);
+          if (match.length > 0) {
+            this.repair("old", book);
+          }
+          //-- seperate new testement
+          var match = this.newTestementBooks.filter(record => record === book.book);
+          if (match.length > 0) {
+            this.repair("new", book);
+          }
+        });
       });
     });
   }
@@ -46,7 +54,6 @@ export class Data {
       var clean: any = [];
       for (var x in book.chapters[c]) {
         for (var n in book.chapters[c][x]) {
-          //console.log(c,x,n,book.chapters[c][x][n].replace("{","<strong>").replace("}","</strong>"))
           if (testement == "old") {
             this.oldTestement.push({
               abbrev: book.abbrev,
@@ -85,7 +92,7 @@ export class Data {
 
   private loadBible(): Promise<any> {
     return new Promise(resolve => {
-      this.http.get("assets/data/en_kjv.json")
+      this.http.get("assets/data/" + this.bibleVersion + ".json")
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);
