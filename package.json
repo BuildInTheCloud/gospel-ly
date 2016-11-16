@@ -50,8 +50,7 @@
       "locator": "https://www.npmjs.com/package/cordova-plugin-admobpro.git",
       "id": "cordova-plugin-admobpro"
     },
-    "cordova-plugin-crosswalk-webview",
-    "cordova-plugin-secure-storage"
+    "cordova-plugin-crosswalk-webview"
   ],
   "cordovaPlatforms": [
     "ios",

@@ -4,7 +4,7 @@
   <description>gospel-ly.</description>
   <author email="mark@buildinthecloud.com" href="http://www.buildinthecloud.com/gospel-ly.html">BuildInTheCloud</author>
   <content src="index.html"/>
-  <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
+  <!--icon src="resources/android/icon/drawable-xhdpi-icon.png"/-->
   <access origin="*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
@@ -15,34 +15,34 @@
   <allow-navigation href="http://*/*"/>
   <allow-navigation href="tel:*"/>
   <allow-navigation href="mailto:*"/>
-  <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine"/>
-  <preference name="loadUrlTimeoutValue" value="900000"/>
-  <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="8000"/>
-  <preference name="FadeSplashScreenDuration" value="4000"/>
-  <preference name="FadeSplashScreen" value="true"/>
-  <preference name="ShowSplashScreenSpinner" value="false"/>
+  <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+  <preference name="loadUrlTimeoutValue" value="900000" />
+  <preference name="SplashScreen" value="screen" />
   <preference name="webviewbounce" value="true"/>
   <preference name="UIWebViewBounce" value="true"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
-  <preference name="KeepRunning" value="true"/>
-  <preference name="ShowTitle" value="true"/>
-  <preference name="InAppBrowserStorageEnabled" value="true"/>
-  <preference name="SuppressesIncrementalRendering" value="false"/>
-  <preference name="orientation" value="portrait"/>
-  <preference name="xwalkVersion" value="18+"/>
-  <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect"/>
-  <preference name="xwalkMode" value="embedded"/>
-  <preference name="xwalkMultipleApk" value="true"/>
+  <preference name="SplashScreenDelay" value="8000"/>
+  <preference name="FadeSplashScreenDuration" value="4000"/>
+  <preference name="KeepRunning" value="true" />
+  <preference name="ShowTitle" value="true" />
+  <preference name="InAppBrowserStorageEnabled" value="true" />
+  <preference name="SuppressesIncrementalRendering" value="true" />
+  <preference name="orientation" value="portrait" />
+  <preference name="FadeSplashScreen" value="true" />
+  <preference name="ShowSplashScreenSpinner" value="false" />
+  <preference name="xwalkVersion" value="18+" />
+  <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+  <preference name="xwalkMode" value="embedded" />
+  <preference name="xwalkMultipleApk" value="true" />
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
   <feature name="CDVWKWebViewEngine">
     <param name="ios-package" value="CDVWKWebViewEngine"/>
   </feature>
-  <plugin name="cordova-plugin-splashscreen" spec="https://github.com/apache/cordova-plugin-splashscreen.git"/>
+  <plugin name="cordova-plugin-splashscreen" spec="3.2.2"/>
   <plugin name="cordova-plugin-wkwebview-engine" spec="https://github.com/driftyco/cordova-plugin-wkwebview-engine.git"/>
   <plugin name="cordova-plugin-device" spec="~1.1.2"/>
   <plugin name="cordova-plugin-console" spec="~1.0.3"/>
@@ -51,23 +51,22 @@
   <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
   <plugin name="cordova-plugin-x-toast" spec="~2.5.2"/>
   <plugin name="cordova-plugin-admobpro" spec="latest"/>
-  <plugin name="cordova-plugin-secure-storage" spec="latest"/>
   <platform name="android">
     <framework src="com.google.android.gms:play-services-ads:+"/>
     <android-targetSdkVersion value="25"/>
     <allow-intent href="market:*"/>
-    <icon src="resources\android\icon\drawable-ldpi-icon.png" density="ldpi"/>
-    <icon src="resources\android\icon\drawable-mdpi-icon.png" density="mdpi"/>
-    <icon src="resources\android\icon\drawable-hdpi-icon.png" density="hdpi"/>
-    <icon src="resources\android\icon\drawable-xhdpi-icon.png" density="xhdpi"/>
-    <icon src="resources\android\icon\drawable-xxhdpi-icon.png" density="xxhdpi"/>
-    <icon src="resources\android\icon\drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
-    <splash src="resources\android\splash\drawable-port-ldpi-screen.png" density="port-ldpi"/>
-    <splash src="resources\android\splash\drawable-port-mdpi-screen.png" density="port-mdpi"/>
-    <splash src="resources\android\splash\drawable-port-hdpi-screen.png" density="port-hdpi"/>
-    <splash src="resources\android\splash\drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
-    <splash src="resources\android\splash\drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
-    <splash src="resources\android\splash\drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
+    <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
+    <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
+    <icon src="resources/android/icon/drawable-hdpi-icon.png" density="hdpi"/>
+    <icon src="resources/android/icon/drawable-xhdpi-icon.png" density="xhdpi"/>
+    <icon src="resources/android/icon/drawable-xxhdpi-icon.png" density="xxhdpi"/>
+    <icon src="resources/android/icon/drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
+    <splash src="resources/android/splash/drawable-port-ldpi-screen.png" density="port-ldpi"/>
+    <splash src="resources/android/splash/drawable-port-mdpi-screen.png" density="port-mdpi"/>
+    <splash src="resources/android/splash/drawable-port-hdpi-screen.png" density="port-hdpi"/>
+    <splash src="resources/android/splash/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
+    <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
+    <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*"/>

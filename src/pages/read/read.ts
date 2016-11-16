@@ -54,10 +54,11 @@ export class ReadPage {
   setReadView() {
     if (this.testement == "old") {
       this.readView = this.oldTestement.filter(record => record.book === this.book);
+      this.cleanView = this.oldTestement.filter(record => record.book === this.book);
     } else if (this.testement == "new") {
       this.readView = this.newTestement.filter(record => record.book === this.book);
+      this.cleanView = this.newTestement.filter(record => record.book === this.book);
     }
-    this.cleanView = this.readView;
     this.chapters = this.cleanView.filter(record => record.verse == "1");
   }
 
@@ -72,17 +73,18 @@ export class ReadPage {
 
   onSearchInput(event) {
     this.setReadView();
+    var searchThis = this.cleanView;
     var searchText = event.target.value;
     if (searchText == "" || searchText == undefined) {
       console.log("FILTER CLEARED");
     } else {
-      this.readView.forEach(record => {
+      searchThis.forEach(record => {
         var regex = new RegExp(searchText, "gi");
         record.text = record.text.replace(regex, "<span class=\"highlight\">"+searchText.toUpperCase()+"</span>");
       });
       console.log("FILTER: ", searchText);
     }
-    return this.readView;
+    this.readView = searchThis;
   }
 
   trackByFn() {
